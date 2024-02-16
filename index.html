@@ -2,7 +2,7 @@
     
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <title>AesFA</title>
+    <title>MinD-Vis</title>
 
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -47,10 +47,10 @@
     <div class="container" id="main">
         <div class="row">
             <h1 class="col-md-12 text-center">
-                AesFA: An Aesthetic Feature-Aware Arbitrary Neural Style Transfer
+                Seeing Beyond the Brain: Conditional Diffusion Model with Sparse Masked Modeling for Vision Decoding
             <br /><br />
             <small>
-                AAAI2024
+                CVPR2023
             </small>
             <br /><br />
             </h1>
@@ -59,30 +59,30 @@
             <div class="col-md-12 text-center">
                 <ul class="list-inline">
                     <li>
-                        <a href="https://ioahKwon.github.io">
-                          Joonwoo Kwon
+                        <a href="https://neuroimaginglab.org/index.html">
+                          Zijiao Chen
                         </a><sup>1*</sup>
                     </li>
                     <li>
 <!--                         <a href="https://hk.linkedin.com/in/qing-jiaxin-188984119"> -->
-                        <a href="https://Sooyyoungg.github.io">
-                          Sooyoung Kim
-                        </a><sup>1*</sup>
+                        <a href="mailto:jqing@ie.cuhk.edu.hk">
+                          Jiaxin Qing
+                        </a><sup>2*</sup>
                     </li>                    
                    <li>
-                        <a href="https://ywlincq.github.io/">
-                          Yuewei Lin
-                        </a><sup>2†</sup>
+                        <a href="https://tiangexiang.github.io/">
+                          Tiange Xiang
+                        </a><sup>3</sup>
                     </li>
                     <li>
-                        <a href="http://sjyoo.com/">
-                          Shinjae Yoo
-                        </a><sup>2†</sup>
+                        <a href="https://neuroimaginglab.org/index.html">
+                          Wan Lin Yue
+                        </a><sup>1</sup>
                     </li> 
                     <li>
-                        <a href="https://www.connectomelab.com/home">
-                          Jiook Cha
-                        </a><sup>1†</sup>
+                        <a href="https://scholar.google.com.sg/citations?user=4Z1S3_oAAAAJ&hl=en">
+                          Juan Helen Zhou
+                        </a><sup>1</sup>
                     </li>                      
                 </ul>
             </div>
@@ -92,18 +92,18 @@
             <div class="col-md-12 text-center">
                 <ul class="list-inline">
                     <li>
-                        <sup>1</sup>Seoul National University
+                        <sup>1</sup>National University of Singapore, Center for Sleep and Cognition, Centre for Translational Magnetic Resonance Research
                     </li>
                     <br>
                     <li>
-                        <sup>2</sup>Brookhaven National Laboratory
+                        <sup>2</sup>The Chinese University of Hong Kong, Department of Information Engineering
                     </li>
                     <br>
                     <li>
-                        <sup>*</sup>Equal contribution
+                        <sup>3</sup>Standford University, Vision and Learning Lab
                     </li>
                     <li>
-                        <sup>†</sup>Co-corresponding authors
+                        <sup>*</sup>Equal Contribution
                     </li>
                 </ul>
             </div>
@@ -113,7 +113,7 @@
             <div class="col-md-8 col-md-offset-2 text-center">
                 <ul class="nav nav-pills nav-justified">
                     <li>
-                        <a href="https://arxiv.org/abs/2312.05928" target='_blank'>
+                        <a href="https://arxiv.org/abs/2211.06956" target='_blank'>
                         <img src="./index_files/images/paper.png" height="80px"><br>
                             <h4><strong>Main Paper</strong></h4>
                         </a>
@@ -130,18 +130,12 @@
                             <h4><strong>Supp. Materials</strong></h4>
                         </a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a href="#video">
                         <img src="index_files/images/youtube_icon_dark.png" height="80px"><br>
                             <h4><strong>Video</strong></h4>
                         </a>
-                    </li>
-                    <li>
-                        <a href="./supplementary.pdf" target='_blank'>
-                        <img src="./index_files/images/supp.png" height="80px"><br>
-                            <h4><strong>Colab Demo</strong></h4>
-                        </a>
-                    </li>
+                    </li> -->
                      <!-- <li>
                         <a href="#dataset">
                         <img src="./index_files/images/data.png" height="80px"><br>
@@ -163,39 +157,16 @@
                 </ul>
             </div>
         </div>
-        
+
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <h3>
                     Overview
                 </h3>
                 <img src="./index_files/images/first_fig.png" class="img-responsive" alt="overview"><br>
-                
-                <ul>
-                    <li>
-                        Style representations are highly correlated to spatial information.
-                    </li>
-                    <li>
-                        Existing methods heavily rely on pre-trained networks.
-                    </li>
-                    
-                    <p>
-                        <li style="list-style:none;"> <b>&lt;Main Contributions&lt;</b></li>
-                    </p>
-                        
-                    <li>
-                        We propose a <b>lightweight</b> yet <b>effective</b> model for aesthetic feature extraction and stylization.
-                    <li>
-                        This framework introduces a new module for stylization and straightforward contrastive learning, while completely excluding pre-trained networks at inference.
-                    </li>
-                    <li>
-                        Our approach achieves <b>SOTA</b> results <b>regardless of resolutions (256 to 4K)</b> while achieving faster inference.
-                    </li>
-                </ul>                   
-                </p>
             </div>
         </div>
-           
+
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <h3>
