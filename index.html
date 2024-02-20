@@ -201,31 +201,15 @@
                    
                    Despite the recent advancement, a significant chasm persists between authentic artwork and synthesized stylizations.
                    
-                   1.  Existing NST methods struggle to capture essential aesthetic features, such as tones, brushstrokes, textures, grains and the local structure from style images, leading to discordant colors and irrelevant patterns.
-                   
-                   - Ideally, the goal of using NST is to extract a style from the image and tansfer it to content, necessitating representations that capture both image semantics and stylistic changes.
-                   
-                   - This work focuses on defining these <b>style</b> representations.
+                   1. Existing NST methods struggle to capture essential aesthetic features, such as tones, brushstrokes, textures, grains and the local structure from style images, leading to discordant colors and irrelevant patterns. Ideally, the goal of using NST is to extract a style from the image and tansfer it to content, necessitating representations that capture both image semantics and stylistic changes. This work focuses on defining these <b>style</b> representations.
                    
                    
-                   2. In the context of painting, style representations are dfined by attributes, such as overall color and/or the local structure of brushstrokes.
-                   
-                   Most NST algorithms define style representations as spatially agnostic features to encode this information, such as summary statistics.
-                   
-                   Thus, they lack spatial information representation.
+                   2. In the context of painting, style representations are dfined by attributes, such as overall color and/or the local structure of brushstrokes. Most NST algorithms define style representations as spatially agnostic features to encode this information, such as summary statistics. Thus, they lack spatial information representation.
                    
                    
-                   3. In fact, style representations are highly correlated to spatial information.
+                   3. In fact, style representations are highly correlated to spatial information. For example, Vincent van Gogh's <b>The Starry Night</b> has expressionistic yellow stars and a moon that dominate the upper center and right, while dynamic swirls fill the center of the sky. In pondering the style of this painting, its focal point primarily resides in the sky rather than the village or cypress tress. Therefore, when transferring <b>The Starry Night</b>'s style, the expected style output likely would be the dynamic swirls and expressionistic yellow stars in the sky. <b>From this point of view, spatial information keenly matters in style representations.</b>
                    
-                   - For example, Vincent van Gogh's <b>The Starry Night</b> has expressionistic yellow stars and a moon that dominate the upper center and right, while dynamic swirls fill the center of the sky.
-                   
-                   - In pondering the style of this painting, its focal point primarily resides in the sky rather than the village or cypress tress.
-                   
-                   - Therefore, when transferring <b>The Starry Night</b>'s style, the expected style output likely would be the dynamic swirls and expressionistic yellow stars in the sky.
-                   
-                   - From this point of view, spatial information keenly matters in style representations.
-                   
-                   - However, most NST algorithms fail to recognize such distinct spatial styles due to their spatial-independent style representations, leading to stylizations lacking in spatial coherence (refer to the bottom panel in Figure 1) 
+                   However, most NST algorithms fail to recognize such distinct spatial styles due to their spatial-independent style representations, leading to stylizations lacking in spatial coherence.
                 </p>
             </div>
         </div>
@@ -236,19 +220,13 @@
                     Motivation 2: Are all negative samples necessary?
                 </h3>
                 <p class="text-justify">
-                    Another challenge for NST is its heavy reliance on pre-trained networks, e.g., VGG (Simonyan and Zisereman 2014), for feature extraction
+                    Another challenge for NST is its heavy reliance on pre-trained networks, e.g., VGG (Simonyan and Zisereman 2014), for feature extraction. However, using such networks during inference is inefficient because of the computational demands from fully connected layers. This limits NST's use at high resolutions (e.g., 2K; 4K) and in mobile or real-time scenarios.
                     
-                    However, using such networks during inference is inefficient because of the computational demands from fully connected laeyrs.
-                    
-                    This limits NST's use at high resolutions (e.g., 2K; 4K) and in mobile or real-time scenarios.
-                    
-                    To mitigate, a prior study (Wang et al. 2023) adopted contrastive learning for end-to-end training while excluding pretrained convolutional neural networks (CNNs) at inference.
-                    
-                    - However, this approach is computationally expensive and inefficient as it uses all negative samples in a mini-batch, especially with higher-resolution samples.
+                    To mitigate, a prior study (Wang et al. 2023) adopted contrastive learning for end-to-end training while excluding pretrained convolutional neural networks (CNNs) at inference. However, this approach is computationally expensive and inefficient as it uses all negative samples in a mini-batch, especially with higher-resolution samples.
                     
                     This prompts a question: <b>are all negative samples necessary?</b>
                     
-                    - Intuitively, the more distant negative samples contribute less to training as they are already well discriminated from the positive sample and vice versa.
+                    Intuitively, the more distant negative samples contribute less to training as they are already well discriminated from the positive sample and vice versa.
                     
                 
             </div>
@@ -268,8 +246,13 @@
                         <li>
                             AesFA overcomes prior NST limitations by encoding style representations while retaining spatial details.
                         </li>
-                    </ul>
-                     
+                        <li>
+                            To expedite the extraction of aesthetic features, we decompose the image into two discrete complementary components, i.e., the hihg- and low-frequency parts.
+                        </li>
+                        <li>
+                            High frequency captures details including textures, grains, and brushstrokes, while low frequency encodes global structures and tones.
+                        </li>
+                    </ul>   
             </div>
         </div>
         
@@ -280,7 +263,19 @@
                 </h3>
 				<img src="./index_files/images/Figure3.jpg" class="img-responsive" alt="method2;style="display: block; margin: 0 auto;/><br>
                 <p class="text-justify">
-                     - Inspired by hard negative mining, we redefine "negative" samples as the k-th nearest negative samples to the stylized output, introducint efficient contrastive learnign for aesthetic featues via pre-trained VGG network.
+                    <ul>
+                       <li>
+                           To effectively infuse frequency-decomposed content features with aesthetic features, a new stylization module, AdaOct, is proposed that yields more satisfying stylizations with sophisticated aesthetic characteristics.
+                       </li>
+                       <li>
+                          The active interactions between two frequencies that occur in OctConv could further enhance aesthetic stylization while reducing the total computational redundancy and unwated artifacts.
+                       </li>
+                    </ul>
+                    
+                     
+                    
+                      
+                </p>
             </div>
         </div>
         
@@ -291,7 +286,11 @@
                 </h3>
 				<img src="./index_files/images/Figure4.jpg" class="img-responsive" alt="method3;style="display: block; margin: 0 auto;/><br>
                 <p class="text-justify">
-                     - Inspired by hard negative mining, we redefine "negative" samples as the k-th nearest negative samples to the stylized output, introducint efficient contrastive learnign for aesthetic featues via pre-trained VGG network.
+                    <ul>
+                     <li>
+                         Inspired by hard negative mining, we redefine "negative" samples as the k-th nearest negative samples to the stylized output, introducing efficient contrastive learnign for aesthetic featues via pre-trained VGG network.
+                     </li>
+                    </ul>
             </div>
         </div>
 		
@@ -330,9 +329,20 @@
 				<img src="./index_files/images/Figure5.jpg" class="img-responsive" alt="qualitative1;style="display: block; margin: 0 auto;/><br>
 				<img src="./index_files/images/Figure6.jpg" class="img-responsive" alt="qualitative2;style="display: block; margin: 0 auto;/><br>
 				<img src="./index_files/images/Figure7.jpg" class="img-responsive" alt="qualitative3;style="display: block; margin: 0 auto;/><br>
-				<img src="./index_files/images/Figure8.jpg" class="img-responsive" alt="quantitative1;style="display: block; margin: 0 auto;/><br>
+				<img src="./index_files/images/Figure8.jpg" class="img-responsive" alt="quantitative4;style="display: block; margin: 0 auto;/><br>
+				<img src="./index_files/images/table.png" class="img-responsive" alt="quantitative5;style="display: block; margin: 0 auto;/><br>
                 <p class="text-justify">
-                    In this work, 
+                <ul>
+                    <li>
+                        <b>AesFA outperforms</b> eight state-of-the-art NST techniques both <b>qualitatively and quantitatively</b> regardless of resolutions, especially in terms of aesthetics while maintaining the essential content semantics.
+                    </li>
+                    <li>
+                        Compared to the other techniques, AesFA accomplishes the highest or at least comparable score along all evaluation metrics <b>regardless of image spatial resolution</b>, rendering a single image in less than 0.02 seconds.
+                    </li>
+                    <li>
+                        More details including ablation studies are elaborated in the main paper.
+                    </li>
+                </ul>
                 </p>
             </div>
         </div>
@@ -347,15 +357,11 @@
                 <p class="text-justify">
                    <ul>
                        <li>
-                           Spatial control is also conveted by users who wish to modify an image by applying different styles to various regions of the image.
+                           Spatial control is also conveted by users who wish to modify an image by applying different styles to various regions of the image. We explored finer aesthetic style control by encoding style images into various frequencies, enabling users to blend content and style without additional resources.
                        </li>
                        
                        <li>
-                           We explored finer aesthetic style control by encoding style images into various frequencies, enabling users to blend content and style without additional resources.
-                       </li>
-                       
-                       <li>
-                           For example, Figure 9 shows the style blending, i.e., using the low-frequency and high-frequency style information from different images.
+                           For example, Figure above shows the style blending, i.e., using the low-frequency and high-frequency style information from different images.
                        </li>
                        
                        <li>
@@ -375,17 +381,38 @@
                 <h3>
                     Video Style Transfer
                 </h3>
-                <img src="./index_files/images/video_style.png" class="img-responsive" alt="videostyle"><br>
-                <p class="text-justify">
-                    <ul>
-                        <li>
-                            AesFA achieves stylized output in less than 0.02 seconds, that is, our model processes 50 frames per second regardless of resolution and is suitable for real-time ultra-high resolution rendering (4K) applications.
-                        </li>
-                        <li>
-                            Our results can yield the best video results in terms of high consistency and aesthetic features (e.g., colors and textures).
-                        </li>
-                    </ul>
-                </p>
+                
+                <div style="width:370px; float:left;margin-right:10px;">
+                    <video id="video1_id" width="100%" controls="" autoplay loop muted controlsList="nodownload">>
+                            <source src="./index_files/videos/content.mp4" type="video/mp4">
+                    </video>
+                </div>
+                
+                <div style="width:370px; float:left;">
+                    <video id="video2_id" width="100%" controls="" autoplay loop muted  controlsList="nodownload">>
+                            <source src="./index_files/videos/stylized.mp4" type="video/mp4">
+                    </video>
+                    
+                </div>
+                <div style="clear:both:">
+                   
+                   <p class="text-justify">
+                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<b>Left</b>: Content Video.&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                    <b>Right</b>: Stylized Output by AesFA in 2K (2048) resolution.
+                    
+                    </p>
+                    <img src="./index_files/images/video_style.png" class="img-responsive" alt="videostyle"><br>
+                    <p class="text-justify">
+                        <ul>
+                            <li>
+                                AesFA achieves stylized output in less than 0.02 seconds; that is, our model processes 50 frames per second regardless of resolution and is suitable for real-time ultra-high resolution rendering (4K) applications.
+                            </li>
+                            <li>
+                                Our results can yield the best video results in terms of high consistency and aesthetic features (e.g., colors and textures).
+                            </li>
+                        </ul>
+                    </p>
+                </div>
             </div>
         </div>
 		
@@ -402,18 +429,21 @@
                            The results by AesFA are sensitive to the weighting hyper-parameters for each loss, often resulting in over-stylized output (e.g., the repetitive intense style patterns on the backgrounds). This could be mitigated by carefully adjusting the weighting hyper-parameters.
                        </li>
                        <li>
-                           The vertical line-shape artifacts alongside the images are often observed (Figure 7). We reason that these appear because the content features are being convolved directly with the predicted <b>aesthetic feature-aware kernels and biases</b> in our model. In addition, the upsampling operation could be the ones that create artifacts.
+                           The vertical line-shape artifacts alongside the images are often observed. We reason that these appear because the content features are being convolved directly with the predicted <b>aesthetic feature-aware kernels and biases</b> in our model. In addition, the upsampling operation could be the ones that create artifacts.
                        </li>
                     </ul>
                 </p>
             </div>
         </div>
-
-        <!-- <div class="row" id="video">
+        
+        
+        
+        <!--
+        <div class="row" id="video">
             <div class="col-md-8 col-md-offset-2">
-                <h3>Video</h3><p style="color:blue;font-size:11px;">(contains audio w/ subtitles)</p>
+                <h3>Video</h3><p style="color:blue;font-size:11px;">
                 <div class="text-center">
-                    <video id="video_id" width="100%" controls="" controlsList="nodownload">>
+                    <video id="video1_id" width="100%" controls="" controlsList="nodownload">>
                         <source src="./index_files/videos/video.mp4" type="video/mp4">
                         <track label="English" kind="subtitles" srclang="en" src="./index_files/videos/captions.vtt">
                     </video>
@@ -429,7 +459,6 @@
                 </div>
             </div>
         </div>
-        
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <h3>
